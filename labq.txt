@@ -1,0 +1,709 @@
+##1
+import java.util.Scanner;
+import java.lang.Math;
+class Main
+{
+public static void main(String xx[])
+{
+float a,b,c,d,r1,r2;
+Scanner s1=new Scanner(System.in);
+System.out.println("enter the coefficients");
+a=s1.nextFloat();
+b=s1.nextFloat();
+c=s1.nextFloat();
+d=b*b-(4*a*c);
+if(d>0)
+{
+r1=(-b+(float)Math.sqrt(d))/(2*a);
+r2=(-b-(float)Math.sqrt(d))/(2*a);
+System.out.println("r1="+r1);
+System.out.println("r2="+r2);
+}
+else if(d==0)
+{
+r1=(-b)/(2*a);
+r2=(-b)/(2*a);
+System.out.println("r1="+r1);
+System.out.println("r2="+r2);
+}
+else
+{
+r1=(float)Math.sqrt(-d)/(2*a);
+r2=-1*r1;
+System.out.println("roots:\n"+"r1="+(-b/(2*a))+"+"+r1+"i"+"\nr2="+(-b/(2*a))+r2+"i");
+}
+}
+}
+
+
+##2
+
+
+
+
+
+public class PRACT_CLLG {
+
+	String usn,name;
+
+	int [] credits = new int[8];
+
+	float [] marks = new float[8];
+
+	public void accept_name_usn(String name,String usn) {
+
+		 this.usn=usn;
+
+		 this.name=name;
+
+	}
+
+	public void accept_credits(int [] credits) {
+
+		this.credits=credits;
+
+	}
+
+	public void accept_marks(float[] marks) {
+
+		this.marks=marks;
+
+	}
+
+	public String return_usn() {
+
+		 return this.usn;
+
+	}
+
+	public String return_name() {
+
+		 return this.name;
+
+	}
+
+	public int [] return_credits() {
+
+		return this.credits;
+
+	}
+
+	public float [] return_marks() {
+
+		return this.marks;
+
+	}
+
+	public float sgpa(int[] credits, float[] marks) {
+
+		int total_credits=0;
+
+		float marks_credits=0;
+
+		for(int i=0; i<8; i++) {
+
+			total_credits=total_credits+credits[i];
+
+		}
+
+		for(int i=0; i<8; i++) {
+
+			marks_credits=marks_credits+(credits[i]*marks[i]);
+
+		}
+
+		return marks_credits/total_credits;
+
+	}
+
+	public static void main(String[] args) {
+
+		PRACT_CLLG p = new PRACT_CLLG();
+
+		p.accept_name_usn("Mukund", "1bm22cs166");
+
+		int [] credits_3rd={4,4,4,3,3,2,1,1};
+
+		p.accept_credits(credits_3rd);
+
+		float [] marks_3rd =  {23.45678f, 45.789012f, 1.2345678f, 87.65432f, 9.012345f, 65.4321f, 34.56789f, 78.90123f};
+
+		p.accept_marks(marks_3rd);
+
+		System.out.println("usn: "+ p.return_usn());
+
+		System.out.println("nmae: "+ p.return_name());
+
+		int[] get_credits=p.return_credits();
+
+		for(int i=0; i<8; i++) {
+
+			System.out.printf("credits:%d  ", get_credits[i]);
+
+		}
+
+		System.out.println();
+
+		float[] get_marks=p.return_marks();
+
+		for(int i=0; i<8; i++) {
+
+			System.out.printf("marks:%f  ", get_marks[i]);
+
+		}
+
+		System.out.println();
+
+		System.out.println("sgpa: "+ p.sgpa(get_credits,get_marks));
+
+		
+
+		
+
+	}
+
+	
+
+}
+
+
+
+
+
+
+
+
+
+
+
+##3
+
+
+
+
+import java.util.Scanner;
+class Book{
+    String name,author;
+    int price,num_pages;
+    Book(String n,String a,int p,int np){
+        this.name=n;this.author=a;
+        this.price=p;this.num_pages=np;
+    }
+    public String toString(){
+        return "Book name:"+name+"\nAuthor:"+author+"\nPrice:"+price+"\nNumber of pages:"+num_pages;
+    }
+}
+public class BookDet {
+    static Scanner s=new Scanner(System.in);
+    static Book set(){
+        s.nextLine();
+        System.out.println("Enter book name");
+        String n=s.nextLine();
+        System.out.println("Enter author name");
+        String a=s.nextLine();
+        System.out.println("Enter price of book");
+        int p=s.nextInt();
+        System.out.println("Enter no of pages");
+        int np=s.nextInt();
+        Book b1=new Book(n,a,p,np);
+        return b1;
+    }
+    public static void main(String sx[]){
+        int n;
+        System.out.println("Enter no of books");
+        n=s.nextInt();
+        Book b[]=new Book[n];
+        for(int i=0;i<n;i++)
+            b[i]=set();
+        System.out.println("Details of books entered");
+        for(int i=0;i<n;i++)
+            System.out.println(b[i]);
+    }
+}
+
+
+
+
+
+##4
+
+
+
+abstract class shape{
+int x=0,y=0;
+public shape(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+abstract void printarea() ;
+}
+class rect extends shape{
+public rect(int l, int b){
+super(l,b);
+}
+public void printarea(){
+System.out.println("area of rectangle: " + (x*y));
+}
+}
+class tri extends shape{
+public tri(int b, int h){
+super(b,h);
+}
+public void printarea(){
+System.out.println("area of triangle: " + (x*y*0.5));
+}
+}
+class cir extends shape{
+public cir(int r){
+super(r,r);
+}
+public void printarea(){
+System.out.println("area of circle: " + (3.14*x*x));
+}
+}
+class shape_abs{
+public static void main(String[] args){
+rect r1= new rect(20,3);
+tri t1 = new tri(5,10);
+cir c1 = new cir(4);
+r1.printarea();
+t1.printarea();
+c1.printarea();
+}
+}
+
+
+
+
+
+
+##5
+
+
+
+class MyException extends Exception {
+    int detail;
+	public MyException(int age, String exe) {
+		this.detail=age;
+		System.out.println(exe + " given age is: " + age + " please enter again");
+	}
+	public String getMessage() {
+        return "Exception: " + detail;
+    }
+}
+class Father{
+	int age;
+	public Father(int age) throws MyException {
+		if (age < 0) throw new MyException(age , "Age cannot be lesser than 0");
+		this.age = age ;
+	}
+}
+class Son extends Father{
+	int age;
+	public Son(int fatherAge, int sonAge) throws MyException{
+		super(fatherAge);
+		this.age = sonAge;
+		if (this.age > super.age) throw new MyException(age , "Age of son cannot be more than father");
+	}
+}
+public class father_son {
+	public static void main(String[] args) {
+		try {
+			Father f1 = new Father(-1);
+			Son s1 = new Son(30 , 31);
+		}
+		catch (MyException e) {
+			 System.out.println("Exception caught: " + e.getMessage());
+		}
+	}
+}
+
+##6
+class SalaryException extends Exception{
+	public SalaryException(String exe){
+		System.out.println("entered sal is wrong: " + exe);
+	}
+}
+
+
+
+class Manager{
+	int salm;
+	public Manager( int sal ) throws SalaryException{
+		if(sal < 0) throw new SalaryException("salary cannot be zero");
+		this.salm = sal;
+	}
+}
+
+class Worker extends Manager{
+	int salw;
+	public Worker(int salw, int salm) throws SalaryException{
+		super(salm);
+		if(salw > salm) throw new SalaryException("salary of worker cannot be greater than manager");
+		this.salw = salw;
+	}
+
+}
+
+public class Employee{
+	public static void main(String[] args){
+	try{
+
+		//Manager m1 = new Manager(-1);
+		Worker w1 = new Worker(3200, 500);
+	}
+	catch  (SalaryException e){
+		System.out.println("Exception caught\n " + e);
+	}
+	}
+}
+##7
+class Gen<T> {
+    T ob;
+    Gen(T o) {
+        ob = o;
+    }
+    T getob() {
+        return ob;
+    }
+    void showType() {
+        System.out.println("Type of T is " + ob.getClass().getName());
+    }
+}
+
+public class GenericsTest{
+    public static void main(String[] args){
+        Gen<Integer> iOb = new Gen<Integer>(88);
+        System.out.println(iOb.getob());
+        iOb.showType();
+
+        Gen<Double> iOb1 = new Gen<Double>(87d);
+        System.out.println(iOb1.getob());
+        iOb1.showType();
+
+        Gen<Float> iOb2 = new Gen<Float>(88.7f);
+        System.out.println(iOb2.getob());
+        iOb2.showType();
+
+        Gen<String> iOb3 = new Gen<String>("this is my string");
+        System.out.println(iOb3.getob());
+        iOb3.showType();
+
+        Gen<Boolean> iOb4 = new Gen<Boolean>(true);
+        System.out.println(iOb4.getob());
+        iOb4.showType();
+    }
+}
+
+
+##8
+
+
+
+package CIE;
+
+public class student {
+	public String usn;
+	public String name;
+	public int sem;
+	public student(String u, String n, int s) {
+		this.usn = u;
+		this.name = n;
+		this.sem = s;
+	}
+}
+
+
+
+
+
+
+
+package CIE;
+
+public class internals extends CIE.student{
+	public double imarks[] ; 
+	public internals(String u, String n, int s ,double m[]) {
+		super(u,n,s);
+		this.imarks = m;
+	}
+}
+
+
+
+
+
+
+
+
+
+package SEE;
+import CIE.student;
+public class externals extends CIE.student{
+	public double smarks[];
+	public externals (String u, String n, int s ,double m[]) {
+		super(u,n,s);
+		this.smarks = m;
+	}
+}
+
+
+
+
+
+package result;
+import CIE.student ;
+import CIE.internals;
+import SEE.externals;
+public class test {
+	public static void main(String[] args) {
+		double internal[] ={43, 45, 47, 44, 41};
+		double external[] = {90, 87, 65, 98, 43};
+		student s1 = new student("1BM22CS166", "Mukund", 3);
+		internals i1 = new internals("1BM22CS166", "Mukund", 3 ,internal);
+		externals e1 = new externals("1BM22CS166", "Mukund", 3 , external);
+		System.out.println("usn:" + s1.usn + " name: " + s1.name + " sem: " + s1.sem );
+		System.out.println("internal marks: ");
+		for(int i = 0; i<5 ; i++) {
+			System.out.printf("internal marks %d : %f", i+1, i1.imarks[i]);
+		}
+		System.out.println();
+		System.out.println("external marks: ");
+		for(int i = 0; i<5 ; i++) {
+			System.out.printf("external marks %d : %f", i+1, e1.smarks[i]);
+		}
+	}
+}
+
+
+
+
+#9
+
+class NT implements Runnable{
+	Thread t;
+	NT(){
+		t = new Thread(this , "child thread");
+		System.out.println("Child thread: "+t);
+		t.start();
+	}
+	public void run() {
+		try {
+			for(int i=5 ; i>0 ; i--) {
+				System.out.println("CSE");
+				Thread.sleep(2000);
+			}
+		}
+		catch (InterruptedException e) {
+			System.out.println("main thread interrupted");
+		}
+	}
+}
+public class lab_5_2 {
+	public static void main(String[] args) {
+		new NT();
+		try {
+			for(int i=5 ; i>0 ; i--) {
+				System.out.println("BMS college of Engineering");
+				Thread.sleep(10000);
+			}
+		}
+		catch (InterruptedException e) {
+			System.out.println("main thread interrupted");
+		}
+	}
+	
+}
+
+#10
+
+import java.util.Scanner;
+
+class Account {
+    String customerName;
+    long accountNumber;
+    String accountType;
+    double balance;
+
+    public Account(String customerName, long accountNumber, String accountType) {
+        this.customerName = customerName;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = 0.0;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposit successful.");
+    }
+
+    public void displayBalance() {
+        System.out.println("Current Balance: " + balance);
+    }
+
+    public void withdraw(double amount) {
+        if (amount > balance) {
+            System.out.println("Insufficient balance.");
+        } else {
+            balance -= amount;
+            System.out.println("Withdrawal successful.");
+        }
+    }
+}
+
+class Sav_acct extends Account {
+    double interestRate;
+
+    public Sav_acct(String customerName, long accountNumber) {
+        super(customerName, accountNumber, "Savings");
+        this.interestRate = 0.05; // Assuming 5% interest rate
+    }
+
+    public void depositInterest() {
+        double interest = balance * interestRate;
+        balance += interest;
+        System.out.println("Interest deposited: " + interest);
+    }
+}
+
+class Cur_acct extends Account {
+    double minimumBalance;
+    double serviceCharge;
+
+    public Cur_acct(String customerName, long accountNumber) {
+        super(customerName, accountNumber, "Current");
+        this.minimumBalance = 1000.0; // Minimum balance requirement
+        this.serviceCharge = 50.0; // Service charge for falling below minimum balance
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (amount > balance) {
+            System.out.println("Insufficient balance.");
+        } else {
+            balance -= amount;
+            if (balance < minimumBalance) {
+                balance -= serviceCharge;
+                System.out.println("Service charge applied.");
+            }
+            System.out.println("Withdrawal successful.");
+        }
+    }
+}
+
+public class Bank {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Creating savings account
+        Sav_acct savingsAccount = new Sav_acct("John Doe", 123456789);
+
+        // Creating current account
+        Cur_acct currentAccount = new Cur_acct("Jane Doe", 987654321);
+
+        // Deposit to savings account
+        System.out.print("Enter amount to deposit to savings account: ");
+        double depositAmount = scanner.nextDouble();
+        savingsAccount.deposit(depositAmount);
+        savingsAccount.displayBalance();
+
+        // Deposit to current account
+        System.out.print("Enter amount to deposit to current account: ");
+        depositAmount = scanner.nextDouble();
+        currentAccount.deposit(depositAmount);
+        currentAccount.displayBalance();
+
+        // Withdraw from savings account
+        System.out.print("Enter amount to withdraw from savings account: ");
+        double withdrawAmount = scanner.nextDouble();
+        savingsAccount.withdraw(withdrawAmount);
+        savingsAccount.displayBalance();
+
+        // Withdraw from current account
+        System.out.print("Enter amount to withdraw from current account: ");
+        withdrawAmount = scanner.nextDouble();
+        currentAccount.withdraw(withdrawAmount);
+        currentAccount.displayBalance();
+
+        // Deposit interest to savings account
+        savingsAccount.depositInterest();
+        savingsAccount.displayBalance();
+
+        scanner.close();
+    }
+}
+#11
+import java.awt.*;
+import java.awt.event.*;
+
+public class DivisionCalculator extends Frame implements ActionListener {
+    private TextField num1Field, num2Field, resultField;
+
+    public DivisionCalculator() {
+        setTitle("Integer Division Calculator");
+        setSize(300, 200);
+        setLayout(new FlowLayout());
+
+        Label num1Label = new Label("Num1: ");
+        num1Field = new TextField(10);
+        add(num1Label);
+        add(num1Field);
+
+        Label num2Label = new Label("Num2: ");
+        num2Field = new TextField(10);
+        add(num2Label);
+        add(num2Field);
+
+        Button divideButton = new Button("Divide");
+        add(divideButton);
+        divideButton.addActionListener(this);
+
+        Label resultLabel = new Label("Result: ");
+        resultField = new TextField(10);
+        resultField.setEditable(false);
+        add(resultLabel);
+        add(resultField);
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent windowEvent) {
+                System.exit(0);
+            }
+        });
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            int num1 = Integer.parseInt(num1Field.getText());
+            int num2 = Integer.parseInt(num2Field.getText());
+            if (num2 == 0) {
+                throw new ArithmeticException("Cannot divide by zero");
+            }
+            int result = num1 / num2;
+            resultField.setText(String.valueOf(result));
+        } catch (NumberFormatException ex) {
+            showMessageDialog("NumberFormatException", "Please enter valid integers for Num1 and Num2.");
+        } catch (ArithmeticException ex) {
+            showMessageDialog("ArithmeticException", "Cannot divide by zero.");
+        }
+    }
+
+    private void showMessageDialog(String title, String message) {
+        Dialog dialog = new Dialog(this, title, true);
+        dialog.setLayout(new FlowLayout());
+        dialog.add(new Label(message));
+        Button okButton = new Button("OK");
+        okButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dialog.dispose();
+            }
+        });
+        dialog.add(okButton);
+        dialog.setSize(200, 100);
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        DivisionCalculator calculator = new DivisionCalculator();
+        calculator.setVisible(true);
+    }
+}
